@@ -26,19 +26,26 @@ $(function() {
          * object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-        it('URLs are not empty', function() {
+        it('URLs are populated with data', function() {
             var feed;
-            var isContainsData;
+            var isEmpty = false;
+            var isNull = false;
 
             for (var i = 0; i < allFeeds.length; i++) {
                 feed = allFeeds[i];
-                isContainsData = true;
-                if (!feed.url) {
-                    isContainsData = false;
+                //checks to see if Feed Url is undefined
+                if (typeof feed.url === "undefined") {
+                    isNull = true;
+                    break;
+                }
+                //checks to see if Feed Url is empty
+                else if (feed.url === "") {
+                    isEmpty = true;
                     break;
                 }
             }
-            expect(isContainsData).toBe(true);
+            expect(isNull).toBe(false);
+            expect(isEmpty).toBe(false);
         });
 
 
@@ -46,21 +53,27 @@ $(function() {
          * object and ensures it has a name defined
          * and that the name is not empty.
          */
-        it('names are not empty', function() {
+        it('names are populated with data', function() {
             var feed;
-            var isContainsData;
+            var isEmpty = false;
+            var isNull = false;
 
             for (var i = 0; i < allFeeds.length; i++) {
                 feed = allFeeds[i];
-                isContainsData = true;
-                if (!feed.name) {
-                    isContainsData = false;
+                //checks to see if Feed name is undefined
+                if (typeof feed.name === "undefined") {
+                    isNull = true;
+                    break;
+                }
+                //checks to see if Feed name is empty
+                else if (feed.name === "") {
+                    isEmpty = true;
                     break;
                 }
             }
-            expect(isContainsData).toBe(true);
+            expect(isNull).toBe(false);
+            expect(isEmpty).toBe(false);
         });
-
     });
 
     /* This is The menu test suite.  It includes tests
